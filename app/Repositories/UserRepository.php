@@ -30,7 +30,6 @@ class UserRepository extends BaseRepository
         $user->password        = bcrypt($inputs['password']);
         $user->email           = $inputs['email'];
         $user->authority       = $inputs['authority'];
-        $user->contract_status = $inputs['contract_status'];
         $this->save($user, $inputs);
 
         return $user;
@@ -65,7 +64,6 @@ class UserRepository extends BaseRepository
             $user->password     = bcrypt($inputs['password']);
         }
         $user->email            = $inputs['email'];
-        $user->contract_status  = $inputs['contract_status'];
         if (isset($inputs['authority'])) {
             $user->authority  = $inputs['authority'];
         }
@@ -89,7 +87,7 @@ class UserRepository extends BaseRepository
             });
         }
         $model = $model->orderBy('created_at', 'DESC');
-        $model = $model->select('id','name', 'email', 'company_name', 'contract_status', 'url', 'authority');
+        $model = $model->select('id','name', 'email', 'company_name', 'url', 'authority');
         $data  = $model->paginate($perPage);
         return $data;
     }

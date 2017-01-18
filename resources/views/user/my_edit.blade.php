@@ -42,12 +42,6 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            {!! Form::label('contract_status', trans('field.status'), ['class' => 'col-md-2 control-label']) !!}
-                            <div class="col-md-6">
-                                <label class="control-label">{{{ isset($contract_status[$user->contract_status]) ? $contract_status[$user->contract_status] : '' }}}</label>
-                            </div>
-                        </div>
-                        <div class="form-group">
                             {!! Form::label('password', trans('field.password'), ['class' => 'col-md-2 control-label']) !!}
                             <div class="col-md-3">
                                 {!! Form::password('password', ['id' => 'inputPassword','class' => 'form-control']) !!}

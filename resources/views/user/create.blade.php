@@ -71,7 +71,7 @@
                     <div class="form-group">
                         {!! Form::label('url', trans('field.url'), ['class' => 'col-md-2 control-label']) !!}
                         <div class="col-md-6">
-                            {!! Form::text('url', null, ['id' => 'inputUrl','class' => 'form-control']) !!}
+                            <input id="inputUrl" class="form-control " name="url" type="url" value="">
                             @if ($errors->has('url'))
                                 <label for="inputUrl" class="error">{{ $errors->first('url') }}</label>
                             @endif
@@ -80,26 +80,9 @@
                     @if(ends_with(Route::currentRouteAction(), 'UserController@create')
                     || (ends_with(Route::currentRouteAction(), 'UserController@edit') && Auth::user()->id != $user->id))
                         <div class="form-group">
-                            {!! Form::label('contract_status', trans('field.status'), ['class' => 'col-md-2 control-label required']) !!}
-                            <div class="col-md-3">
-                                {!! Form::select(
-                                'contract_status',
-                                $contract_status, null,
-                                ['id' => 'selectStatus', 'class' => "form-control" ]
-                                )!!}
-                                @if ($errors->has('contract_status'))
-                                    <label for="selectStatus" class="error">{{ $errors->first('contract_status') }}</label>
-                                @endif
-                            </div>
-                        </div>
-                        <div class="form-group">
                             {!! Form::label('authority', trans('field.authority'), ['class' => 'col-md-2 control-label required']) !!}
                             <div class="col-md-3">
-                                {!! Form::select(
-                                'authority',
-                                $group, null,
-                                ['id' => 'selectAuthority', 'class' => "form-control" ]
-                                )!!}
+                                {!! Form::select('authority',$group, null,['id' => 'selectAuthority', 'class' => "form-control" ])!!}
                                 @if ($errors->has('authority'))
                                     <label for="inputAuthority" class="error">{{ $errors->first('authority') }}</label>
                                 @endif

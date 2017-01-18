@@ -34,7 +34,6 @@
                         <thead>
                         <tr role="row">
                             <th class="clientNo">No.</th>
-                            <th class="clientStatus"><?php echo e(trans('field.status')); ?></th>
                             <th class="clientEmail"><?php echo e(trans('field.email')); ?></th>
                             <th class="clientCompany"><?php echo e(trans('field.company_name')); ?></th>
                             <th class="clientUrl"><?php echo e(trans('field.url')); ?></th>
@@ -47,7 +46,6 @@
                             <?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $i => $user): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
                                 <tr>
                                     <td><?php echo e(($users->currentPage() - 1) * $users->perPage() + $i + 1); ?></td>
-                                    <td><?php echo e(isset($contract_status[$user->contract_status]) ? $contract_status[$user->contract_status] : ''); ?></td>
                                     <td><?php echo e($user->email); ?></td>
                                     <td><?php echo e($user->company_name); ?></td>
                                     <td><?php echo e($user->url); ?></td>
@@ -55,7 +53,7 @@
                                     <td class="center">
                                         <a href="<?php echo e(URL::route("user.edit","$user->id")); ?>" class="btn btn-info btn-sm edit"><?php echo e(trans('button.update')); ?></a>
                                         <?php if($user->id != $user_id): ?>
-                                            <a class="btn btn-danger btn-sm btn-delete" data-button="<?php echo e($user->id); ?>"  data-from = "<?php echo e(URL::route("user.destroy",":id")); ?>" href="javascript:void(0)">
+                                            <a class="btn btn-danger btn-sm btn-delete" data-button="<?php echo e($user->id); ?>"  data-from="<?php echo e(URL::route("user.destroy",":id")); ?>" >
                                                 <?php echo e(trans('button.delete')); ?>
 
                                             </a>

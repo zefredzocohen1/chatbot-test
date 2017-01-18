@@ -52,7 +52,6 @@
                 $('.delete-modal .delete-error').hide();
                 $('.delete-modal .delete-success').hide();
                 id = $(this).data('button');
-                id2 = $(this).data('button2');
 
                 $('.delete-modal').modal({
                     backdrop: 'static',
@@ -63,9 +62,7 @@
             $('.btn-modal-delete').on('click', function(evt) {
                 $('.overlay-wrapper .overlay').show();
                 $('.btn-modal-delete').hide();
-                if(id2 != void 0) {
-                    deleteUrl = deleteUrl.replace(':parent_id',id2);
-                }
+
                 deleteUrl = deleteUrl.replace(':id',id);
                 $.ajax({
                     url: deleteUrl,

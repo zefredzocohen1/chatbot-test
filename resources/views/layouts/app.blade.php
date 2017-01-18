@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-    <title>@section('title')  SNS @show</title>
+    <title>@section('title')  CHATBOT @show</title>
     @section('meta_keywords')
-        <meta name="keywords" content="SNS"/>
+        <meta name="keywords" content="CHATBOT"/>
     @show @section('meta_author')
         <meta name="author" content="hailt"/>
         <link href="{{ elixir('css/app.css') }}" rel="stylesheet">

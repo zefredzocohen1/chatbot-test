@@ -31,7 +31,6 @@
                         <thead>
                         <tr role="row">
                             <th class="clientNo">No.</th>
-                            <th class="clientStatus">{{{ trans('field.status') }}}</th>
                             <th class="clientEmail">{{{ trans('field.email') }}}</th>
                             <th class="clientCompany">{{{ trans('field.company_name') }}}</th>
                             <th class="clientUrl">{{{ trans('field.url') }}}</th>
@@ -44,7 +43,6 @@
                             @foreach($users as $i => $user)
                                 <tr>
                                     <td>{{{ ($users->currentPage() - 1) * $users->perPage() + $i + 1 }}}</td>
-                                    <td>{{{ isset($contract_status[$user->contract_status]) ? $contract_status[$user->contract_status] : '' }}}</td>
                                     <td>{{{ $user->email }}}</td>
                                     <td>{{{ $user->company_name }}}</td>
                                     <td>{{{ $user->url }}}</td>
@@ -52,7 +50,7 @@
                                     <td class="center">
                                         <a href="{{ URL::route("user.edit","$user->id") }}" class="btn btn-info btn-sm edit">{{{ trans('button.update') }}}</a>
                                         @if($user->id != $user_id)
-                                            <a class="btn btn-danger btn-sm btn-delete" data-button="{{{$user->id}}}"  data-from = "{{ URL::route("user.destroy",":id") }}" href="javascript:void(0)">
+                                            <a class="btn btn-danger btn-sm btn-delete" data-button="{{{$user->id}}}"  data-from="{{ URL::route("user.destroy",":id") }}" >
                                                 {{{ trans('button.delete')}}}
                                             </a>
                                         @endif

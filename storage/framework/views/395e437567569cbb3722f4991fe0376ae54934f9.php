@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-    <title><?php $__env->startSection('title'); ?>  SNS <?php echo $__env->yieldSection(); ?></title>
+    <title><?php $__env->startSection('title'); ?>  CHATBOT <?php echo $__env->yieldSection(); ?></title>
     <?php $__env->startSection('meta_keywords'); ?>
-        <meta name="keywords" content="SNS"/>
+        <meta name="keywords" content="CHATBOT"/>
     <?php echo $__env->yieldSection(); ?> <?php $__env->startSection('meta_author'); ?>
         <meta name="author" content="hailt"/>
         <link href="<?php echo e(elixir('css/app.css')); ?>" rel="stylesheet">

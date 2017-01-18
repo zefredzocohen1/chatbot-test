@@ -21,6 +21,4 @@ return [
     'master_edit'   => 'Sửa thông tin Master',
     'dashboard'     => 'Bảng điều khiển',
     'info_detail'     => 'Thông tin chi tiết',
-    'post_engagement_daily'     => 'Post Engagement Daily',
-    'page_engagement_daily'     => 'Page Engagement Daily',
 ];

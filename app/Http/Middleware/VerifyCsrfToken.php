@@ -12,6 +12,17 @@ class VerifyCsrfToken extends BaseVerifier
      * @var array
      */
     protected $except = [
-        //
+        'api/*',
     ];
+
+    public function handle($request, \Closure $next)
+    {
+        foreach ($this->except as $except) {
+            if ($request->is($except)) {
+                return $next($request);
+            }
+        }
+
+        return parent::handle($request, $next);
+    }
 }

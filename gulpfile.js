@@ -22,7 +22,7 @@ var paths = {
 elixir(mix => {
     mix.copy(paths.bootstrap + '/fonts/', 'public/build/fonts');
     mix.copy(paths.fontawesome + '/fonts/**', 'public/build/fonts');
-    mix.sass('app.scss')
+    mix.sass('app.scss', 'resources/assets/build/app.css')
        .webpack('app.js');
     mix.styles([
         paths.bootstrap + '/dist/css/bootstrap.min.css',
