@@ -11,14 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home123');
-});
-
 Auth::routes();
 
 Route::get('home', 'HomeController@index');
-Route::get('test', 'HomeController@test');
 Route::get('/', 'Auth\LoginController@showLoginForm');
 Route::get('/logout', 'Auth\LoginController@logout');
 Route::resource('user', 'UserController');

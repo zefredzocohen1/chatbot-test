@@ -17,8 +17,8 @@ class UserController extends Controller
 
     public function __construct(UserRepository $user){
         $this->repUser = $user;
-        $this->middleware(['auth', 'authority']);
-        Log::info('init user');
+        $this->middleware('auth');
+        $this->middleware('authority', ['except' => ['accountEdit', 'accountUpdate']]);
     }
     /**
      * Display a listing of the resource.
@@ -139,6 +139,24 @@ class UserController extends Controller
         }
     }
 
+    public function accountUpdate(UserRequest $request)
+    {
+        $user = Auth::user();
+        $inputs = $request->all();
+        if(!isset($inputs['password'])){
+            unset($inputs['password']);
+        }
+        DB::beginTransaction();
+        try{
+            $this->repUser->updateAccount($user, $inputs);
+            DB::commit();
+            return redirect()->back()->with('alert-success', trans('message.update_success', ['name' => trans('default.profile')]));
+        } catch (\Exception $e){
+            DB::rollback();
+            return redirect()->back()->with('alert-danger', trans('message.update_error', ['name' => trans('default.profile')]));
+        }
+    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -159,4 +177,5 @@ class UserController extends Controller
             'errors' => $errors
         ), 400);
     }
+
 }
