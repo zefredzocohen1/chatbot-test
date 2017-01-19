@@ -13,6 +13,12 @@ return [
     'master' => [
         'contract_status'   => 'contract_status',
         'services'          => 'services',
+    ],
+    'typeVideo' => [
+        'Video_720' => '1',
+        'Video_1080' => '2',
+        'Video_480' => '3',
+        'Video_360' => '4',
     ]
 
 ];
