@@ -17,6 +17,10 @@ class UserRequest extends Request
     }
 
     /**
+     * Cần 1 cái
+     * bên nội: anh toàn 2 bác lên 2, bác gì 3, 7x20k
+     * anh hưng 2, anh Hau 1, Lan 1, Long 1, anh tuy 3, anh tân 1, bác kháng 3, bác thắng 1, chú vĩnh 2 : 15x50k
+     * anh
      * Get the validation rules that apply to the request.
      *
      * @return array

@@ -138,4 +138,8 @@ upload_tmp_dir = /var/big_temp_file/
 Output Buffering must be turned off in .htaccess or php.ini, or PHP will return memory-related errors:
 
 output_buffering = 0
+
+Kịch bản
+dùng javascript thuần chạy
+Cách fake ip sử dụng dùng sock
 * */
