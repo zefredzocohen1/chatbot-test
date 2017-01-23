@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UserRequest;
+use App\Repositories\UserMongoRepository;
 use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,9 +15,11 @@ use Illuminate\Support\Facades\Response;
 class UserController extends Controller
 {
     protected $repUser;
+    public $repUserMongo;
 
-    public function __construct(UserRepository $user){
+    public function __construct(UserRepository $user, UserMongoRepository $userMongo){
         $this->repUser = $user;
+        $this->repUserMongo = $userMongo;
         $this->middleware('auth');
         $this->middleware('authority', ['except' => ['accountEdit', 'accountUpdate']]);
     }
@@ -84,6 +87,24 @@ class UserController extends Controller
         }
     }
 
+    public function InsertDbMongo(){
+        $user = Auth::user();
+        $userMongo = $this->repUserMongo->getById($user->id);
+        $_data = [
+            'id'                => $user->id,
+            "name"              => $user->name,
+            "email"             => $user->email,
+            "authority"         => $user->authority,
+            "company_name"      => $user->company_name,
+        ];
+        if($userMongo){
+            $this->repUserMongo->updateMongo($_data);
+        }else{
+            $this->repUserMongo->store($_data);
+        }
+        return redirect('user')->with('alert-success', trans('message.update_success', ['name' => trans('default.user')]));
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -111,6 +132,13 @@ class UserController extends Controller
         ]);
     }
 
+    public function DeleteUserMongo(){
+        $user = Auth::user();
+        $test = $this->repUserMongo->destroyMongo(['oid' => '5885c6239a892008344ed983']);
+        dd($test);
+    }
+
+
     /**
      * Update the specified resource in storage.
      *
@@ -137,6 +165,10 @@ class UserController extends Controller
             DB::rollback();
             return redirect()->back()->with('alert-danger', trans('message.update_error', ['name' => trans('default.user')]));
         }
+    }
+
+    public function ShowDbMongo(){
+        dd($this->repUserMongo->showAll());
     }
 
     public function accountUpdate(UserRequest $request)

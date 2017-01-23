@@ -23,4 +23,8 @@ Route::post('/', ['uses' => 'Auth\ResetPasswordController@sendMail', 'as' => 'us
 
 Route::post('/password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
 Route::post('/', ['uses' => 'Auth\ResetPasswordController@sendMail', 'as' => 'user.reset']);
+Route::get('/InsertDbMongo', 'UserController@InsertDbMongo');
+Route::get('/ShowAll', 'UserController@ShowDbMongo');
+Route::get('/DeleteUserMongo', 'UserController@DeleteUserMongo');
+
 
