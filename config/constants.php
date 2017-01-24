@@ -10,9 +10,4 @@ return [
         'enable'                => 1,
         'disable'               => 2,
     ],
-    'master' => [
-        'contract_status'   => 'contract_status',
-        'services'          => 'services',
-    ]
-
 ];

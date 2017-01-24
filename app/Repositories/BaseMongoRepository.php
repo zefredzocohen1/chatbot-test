@@ -21,13 +21,8 @@ class BaseMongoRepository extends Moloquent{
 
     public function destroyMongo($id)
     {
-//        $this->getById($id)->delete();
         $_collection = $this->getCollection();
-        return $_collection->where('_id', [
-            'oid'   => '5885c6239a892008344ed983'
-        ]);
-//        $row = $_collection->where('_id', $id)->delete();
-//        return $row;
+        return $_collection->delete($this->getById($id));
     }
 
 }

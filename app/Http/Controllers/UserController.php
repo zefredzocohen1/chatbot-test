@@ -134,7 +134,7 @@ class UserController extends Controller
 
     public function DeleteUserMongo(){
         $user = Auth::user();
-        $test = $this->repUserMongo->destroyMongo(['oid' => '5885c6239a892008344ed983']);
+        $test = $this->repUserMongo->destroyMongo( 'ObjectId("5885c6239a892008344ed983")');
         dd($test);
     }
 

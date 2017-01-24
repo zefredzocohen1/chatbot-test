@@ -12,8 +12,7 @@ abstract class BaseRepository {
 	/**
 	 * Get number of records.
 	 *
-	 * @return array
-	 */
+	 * @return array	 */
 	public function getNumber()
 	{
 		$total = $this->model->count();

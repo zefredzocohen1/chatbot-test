@@ -22,7 +22,7 @@ class RedirectIfAuthenticated
             if(Auth::user()->authority == $authority['admin']){
                 return redirect('user');
             } elseif(Auth::user()->authority == $authority['client']){
-                return redirect('home/');
+                return redirect('dashboard');
             }
         }
 

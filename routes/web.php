@@ -13,7 +13,7 @@
 
 Auth::routes();
 
-Route::get('home', 'HomeController@index');
+Route::get('dashboard', 'PageController@dashboard');
 Route::get('/', 'Auth\LoginController@showLoginForm');
 Route::get('/logout', 'Auth\LoginController@logout');
 Route::resource('user', 'UserController');
@@ -26,5 +26,4 @@ Route::post('/', ['uses' => 'Auth\ResetPasswordController@sendMail', 'as' => 'us
 Route::get('/InsertDbMongo', 'UserController@InsertDbMongo');
 Route::get('/ShowAll', 'UserController@ShowDbMongo');
 Route::get('/DeleteUserMongo', 'UserController@DeleteUserMongo');
-
-
+Route::resource('page', 'PageController');
